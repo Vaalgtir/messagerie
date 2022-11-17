@@ -1,0 +1,153 @@
+-- Adminer 4.8.1 PostgreSQL 13.7 dump
+
+DROP TABLE IF EXISTS "_prisma_migrations";
+CREATE TABLE "public"."_prisma_migrations" (
+    "id" character varying(36) NOT NULL,
+    "checksum" character varying(64) NOT NULL,
+    "finished_at" timestamptz,
+    "migration_name" character varying(255) NOT NULL,
+    "logs" text,
+    "rolled_back_at" timestamptz,
+    "started_at" timestamptz DEFAULT now() NOT NULL,
+    "applied_steps_count" integer DEFAULT '0' NOT NULL,
+    CONSTRAINT "_prisma_migrations_pkey" PRIMARY KEY ("id")
+) WITH (oids = false);
+
+
+DROP TABLE IF EXISTS "friends";
+DROP SEQUENCE IF EXISTS friends_id_seq;
+CREATE SEQUENCE friends_id_seq INCREMENT 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1;
+
+CREATE TABLE "public"."friends" (
+    "id" integer DEFAULT nextval('friends_id_seq') NOT NULL,
+    "relation" character varying(25) NOT NULL,
+    "requesting" integer,
+    CONSTRAINT "friends_pkey" PRIMARY KEY ("id"),
+    CONSTRAINT "relation" UNIQUE ("relation")
+) WITH (oids = false);
+
+
+DROP TABLE IF EXISTS "users";
+DROP SEQUENCE IF EXISTS users_id_seq;
+CREATE SEQUENCE users_id_seq INCREMENT 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1;
+
+CREATE TABLE "public"."users" (
+    "id" integer DEFAULT nextval('users_id_seq') NOT NULL,
+    "username" character varying(25) NOT NULL,
+    "password" text NOT NULL,
+    "mail" character varying(25) NOT NULL,
+    "isAdmin" boolean DEFAULT false NOT NULL,
+    "isValidated" boolean DEFAULT false NOT NULL,
+    "nom" character varying(25),
+    "prenom" character varying(25),
+    "isBannished" boolean DEFAULT false NOT NULL,
+    CONSTRAINT "mail" UNIQUE ("mail"),
+    CONSTRAINT "username" UNIQUE ("username"),
+    CONSTRAINT "users_pkey" PRIMARY KEY ("id")
+) WITH (oids = false);
+
+INSERT INTO "users" ("id", "username", "password", "mail", "isAdmin", "isValidated", "nom", "prenom", "isBannished") VALUES
+(3,	'test0',	'test',	'test0@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(4,	'test1',	'test',	'test1@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(5,	'test2',	'test',	'test2@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(6,	'test3',	'test',	'test3@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(7,	'test4',	'test',	'test4@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(8,	'test5',	'test',	'test5@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(9,	'test6',	'test',	'test6@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(10,	'test7',	'test',	'test7@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(11,	'test8',	'test',	'test8@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(12,	'test9',	'test',	'test9@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(13,	'test10',	'test',	'test10@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(14,	'test11',	'test',	'test11@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(15,	'test12',	'test',	'test12@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(16,	'test13',	'test',	'test13@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(17,	'test14',	'test',	'test14@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(18,	'test15',	'test',	'test15@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(19,	'test16',	'test',	'test16@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(20,	'test17',	'test',	'test17@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(21,	'test18',	'test',	'test18@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(22,	'test19',	'test',	'test19@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(23,	'test20',	'test',	'test20@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(24,	'test21',	'test',	'test21@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(25,	'test22',	'test',	'test22@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(26,	'test23',	'test',	'test23@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(27,	'test24',	'test',	'test24@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(28,	'test25',	'test',	'test25@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(29,	'test26',	'test',	'test26@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(30,	'test27',	'test',	'test27@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(31,	'test28',	'test',	'test28@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(32,	'test29',	'test',	'test29@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(33,	'test30',	'test',	'test30@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(34,	'test31',	'test',	'test31@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(35,	'test32',	'test',	'test32@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(36,	'test33',	'test',	'test33@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(37,	'test34',	'test',	'test34@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(38,	'test35',	'test',	'test35@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(39,	'test36',	'test',	'test36@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(40,	'test37',	'test',	'test37@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(41,	'test38',	'test',	'test38@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(42,	'test39',	'test',	'test39@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(43,	'test40',	'test',	'test40@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(44,	'test41',	'test',	'test41@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(45,	'test42',	'test',	'test42@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(46,	'test43',	'test',	'test43@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(47,	'test44',	'test',	'test44@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(48,	'test45',	'test',	'test45@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(49,	'test46',	'test',	'test46@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(50,	'test47',	'test',	'test47@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(51,	'test48',	'test',	'test48@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(52,	'test49',	'test',	'test49@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(53,	'test50',	'test',	'test50@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(54,	'test51',	'test',	'test51@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(55,	'test52',	'test',	'test52@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(56,	'test53',	'test',	'test53@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(57,	'test54',	'test',	'test54@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(58,	'test55',	'test',	'test55@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(59,	'test56',	'test',	'test56@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(60,	'test57',	'test',	'test57@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(61,	'test58',	'test',	'test58@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(62,	'test59',	'test',	'test59@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(63,	'test60',	'test',	'test60@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(64,	'test61',	'test',	'test61@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(65,	'test62',	'test',	'test62@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(66,	'test63',	'test',	'test63@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(67,	'test64',	'test',	'test64@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(68,	'test65',	'test',	'test65@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(69,	'test66',	'test',	'test66@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(70,	'test67',	'test',	'test67@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(71,	'test68',	'test',	'test68@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(72,	'test69',	'test',	'test69@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(73,	'test70',	'test',	'test70@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(74,	'test71',	'test',	'test71@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(75,	'test72',	'test',	'test72@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(76,	'test73',	'test',	'test73@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(77,	'test74',	'test',	'test74@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(78,	'test75',	'test',	'test75@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(79,	'test76',	'test',	'test76@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(80,	'test77',	'test',	'test77@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(81,	'test78',	'test',	'test78@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(82,	'test79',	'test',	'test79@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(83,	'test80',	'test',	'test80@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(84,	'test81',	'test',	'test81@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(85,	'test82',	'test',	'test82@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(86,	'test83',	'test',	'test83@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(87,	'test84',	'test',	'test84@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(88,	'test85',	'test',	'test85@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(89,	'test86',	'test',	'test86@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(90,	'test87',	'test',	'test87@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(91,	'test88',	'test',	'test88@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(92,	'test89',	'test',	'test89@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(93,	'test90',	'test',	'test90@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(94,	'test91',	'test',	'test91@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(95,	'test92',	'test',	'test92@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(96,	'test93',	'test',	'test93@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(97,	'test94',	'test',	'test94@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(98,	'test95',	'test',	'test95@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(99,	'test96',	'test',	'test96@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(100,	'test97',	'test',	'test97@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(101,	'test98',	'test',	'test98@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(102,	'test99',	'test',	'test99@test.com',	'1',	'1',	'Test',	'George',	'0'),
+(1,	'admin',	'$2a$10$OE56twAdKrv/c1/xSPYcOeC68.3l6b1lgrOSIsj8ZZp5OdLo6nHDe',	'dragnir19@gmail.com',	'1',	'1',	'Spark',	'Admin',	'0'),
+(2,	'test',	'$2a$10$UTDmq/rIX7rHfX7/nBO5K./p6YeirwJttnQYxAdmEwN3j.QmHEp2m',	'e.eniona2@gmail.com',	'0',	'1',	'test',	'test',	'0');
+
+-- 2022-07-24 13:02:27.394566+00
